@@ -5,6 +5,21 @@
   <title>Show message</title>
 </head>
 <body>
+ <h2>Janken Game</h2>
+  <p><%= mes %></p>
+
+  <h2>Choose your move</h2>
+  <form action="/app/janken" method="post">
+    <label for="hand">Your move:</label>
+    <select id="hand" name="hand">
+      <option value="グー">グー</option>
+      <option value="チョキ">チョキ</option>
+      <option value="パー">パー</option>
+    </select>
+    <button type="submit">Play</button>
+  </form>
+
+
   <h2>Message</h2>
   <p><%= mes %></p>
   <a href="/bye">byeへのリンク（app2kadai3.jsを起動してからクリックしてください）</a><br>
