@@ -16,4 +16,38 @@
       <% } %>
   </table>
 </body>
+<body>
+    <h2>車の車種</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Car Name</th>
+            <th>Maker Name</th>
+        </tr>
+        <% data.forEach(function(row) { %>
+            <tr>
+                <td><%= row.id %></td>
+                <td><%= row.car_name %></td>
+                <td><%= row.maker_name %></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+<body>
+    <h2>STPRメンバー</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Menber Name</th>
+        </tr>
+        <% data.forEach(function(row) { %>
+            <tr>
+                <td><%= row.id %></td>
+                <td><%= row.stpr_name %></td>
+                <td><%= row.man_name %></td>
+            </tr>
+        <% }); %>
+    </table>
+    </body>
 </html>
