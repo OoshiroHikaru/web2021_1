@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>artist message</title>
+</head>
+<body>
+  <h2>アーティスト＆曲名</h2>
+  <table border="1">
+    <tr>
+            <th>ID</th>
+            <th>曲名</th>
+            <th>アーティスト名</th>
+        </tr>
+        <% data.forEach(function(row) { %>
+            <tr>
+                <td><%= row.id %></td>
+                <td><%= row.song_name %></td>
+                <td><%= row.artist_name %></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
+

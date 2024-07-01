@@ -106,6 +106,33 @@ insert into example (都道府県,人口,大学) values ("` + req.body.name + `"
  console.log(req.body);
 });
 
+app.get("/home", (req, res) => {
+  const message = "Music fistival";
+  res.render('music', {mes:message});
+});
+
+app.get("/artist", (req, res) => { 
+let sql = ` 
+	select music.id,music.name as song_name,artist.name as artist_name
+
+	from music
+
+	inner join artist ON music.artist_id = artist.id;
+`; 
+console.log(sql);
+db.serialize(() => { 
+　 db.all(sql, (error, row) => {
+　　 if (error) { 
+　　 console.log(error);
+　　　res.render('music', { mes: "エラーです" }); 
+　　} else { 
+　　console.log(row);
+　　　res.render('artist', { data: row });
+　　　}
+　　 });
+ 　});
+ }); 
+
 
 app.use(function(req, res, next) {
   res.status(404).send('ページが見つかりません');
