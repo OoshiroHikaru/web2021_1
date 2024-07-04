@@ -113,25 +113,46 @@ app.get("/home", (req, res) => {
 
 app.get("/artist", (req, res) => { 
 let sql = ` 
-	select music.id,music.name as song_name,artist.name as artist_name
-
-	from music
-
-	inner join artist ON music.artist_id = artist.id;
+	select id, name as artist_name from artist;
 `; 
 console.log(sql);
 db.serialize(() => { 
 　 db.all(sql, (error, row) => {
 　　 if (error) { 
-　　 console.log(error);
+　　 console.log("Database error: ", error);
 　　　res.render('music', { mes: "エラーです" }); 
 　　} else { 
-　　console.log(row);
+　　console.log("Query result: ", row);
 　　　res.render('artist', { data: row });
 　　　}
 　　 });
  　});
  }); 
+ 
+app.get("/song", (req, res) => { 
+    let sql = `
+        select music.id, music.name as song_name
+        from music
+        inner join artist on music.artist_id = artist.id;
+    `;
+    
+    console.log(sql);
+    
+    db.serialize(() => { 
+        db.all(sql, (error, rows) => {
+            if (error) { 
+                console.log(error);
+                res.render('music', { mes: "エラーです" }); 
+            } else { 
+                console.log(rows);
+                res.render('song', { data: rows });
+            }
+        });
+    });
+});
+
+
+
 
 
 app.use(function(req, res, next) {
