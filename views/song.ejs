@@ -14,9 +14,87 @@
     <% data.forEach(function(row) { %>
       <tr id="song<%= row.id %>">
         <td><%= row.id %></td>
-        <% if (row.id === 1) { %>  <!-- IDが1の場合に外部リンクを設定 -->
+        <% if (row.id === 1) { %> <!-- IDが1の場合のリンク -->
           <td><a href="https://vaundy.jp/news/detail/3004" target="_blank"><%= row.song_name %></a></td>
-        <% } else { %>
+        <% } else if (row.id === 2) { %> <!-- IDが2の場合のリンク -->
+          <td><a href="https://vaundy.jp/news/detail/10301" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 3) { %> <!-- IDが3の場合のリンク -->
+          <td><a href="https://vaundy.jp/news/detail/10248" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 4) { %> <!-- IDが4の場合のリンク -->
+          <td><a href="https://vaundy.jp/news/detail/10074" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 5) { %> <!-- IDが5の場合のリンク -->
+          <td><a href="https://blueencount.jp/news/detail/2620" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 6) { %> <!-- IDが6の場合のリンク -->
+          <td><a href="https://blueencount.jp/news/detail/2610" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 7) { %> <!-- IDが7の場合のリンク -->
+          <td><a href="https://blueencount.jp/news/detail/3921" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 8) { %> <!-- IDが8の場合のリンク -->
+          <td><a href="https://vaundy.jp/news/detail/1392" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 9) { %> <!-- IDが9の場合のリンク -->
+          <td><a href="https://blueencount.jp/news/detail/2926" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 10) { %> <!-- IDが10の場合のリンク -->
+          <td><a href="https://blueencount.jp/news/detail/2802" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 11) { %> <!-- IDが11の場合のリンク -->
+          <td><a href="https://wurts.jp/music/ep/108/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 12) { %> <!-- IDが12の場合のリンク -->
+          <td><a href="https://wurts.jp/music/music-other/417/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 13) { %> <!-- IDが13の場合のリンク -->
+          <td><a href="https://wurts.jp/music/single/117/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 14) { %> <!-- IDが14の場合のリンク -->
+          <td><a href="https://wurts.jp/music/album/114/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 15) { %> <!-- IDが15の場合のリンク -->
+          <td><a href="https://wurts.jp/music/single/120/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 16) { %> <!-- IDが16の場合のリンク -->
+          <td><a href="https://wacci.jp/music/%e5%88%a5%e3%81%ae%e4%ba%ba%e3%81%ae%e5%bd%bc%e5%a5%b3%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%9f%e3%82%88/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 17) { %> <!-- IDが17の場合のリンク -->
+          <td><a href="https://wacci.jp/music/%e5%a4%a7%e4%b8%88%e5%a4%ab%ef%bc%88%e9%80%9a%e5%b8%b8%e7%9b%a4%ef%bc%89/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 18) { %> <!-- IDが18の場合のリンク -->
+          <td><a href="https://wacci.jp/music/%e6%84%9f%e6%83%85%e7%99%be%e6%99%af%ef%bc%88%e9%80%9a%e5%b8%b8%e7%9b%a4%ef%bc%89/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 19) { %> <!-- IDが19の場合のリンク -->
+          <td><a href="https://wacci.jp/music/%e6%84%9b%e3%81%af%e8%96%ac%ef%bc%88%e9%80%9a%e5%b8%b8%e7%9b%a4%ef%bc%89/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 20) { %> <!-- IDが20の場合のリンク -->
+          <td><a href="https://wacci.jp/music/%e6%84%9f%e6%83%85%e7%99%be%e6%99%af%ef%bc%88%e9%80%9a%e5%b8%b8%e7%9b%a4%ef%bc%89/" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 21) { %> <!-- IDが21の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=8OZDgBmehbA" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 22) { %> <!-- IDが22の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=45Ft2gmvgPg&pp=ygUJ55yg44KK5aer" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 23) { %> <!-- IDが23の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=Mi9uNu35Gmk" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 24) { %> <!-- IDが24の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=gsVGf1T2Hfs" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 25) { %> <!-- IDが25の場合のリンク -->
+          <td><a href="https://youtu.be/od8CNHDkIJA" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 26) { %> <!-- IDが26の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=m34DPnRUfMU&pp=ygUJ44Of44K744K5" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 27) { %> <!-- IDが27の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=rWsiVWlvw2E" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 28) { %> <!-- IDが28の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=x2rvSf0STBM&pp=ygUJ44Of44K744K5" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 29) { %> <!-- IDが29の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=Jy-QS27q7lA&pp=ygUJ44Of44K744K5" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 30) { %> <!-- IDが30の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=RiDCIqF0-6Y&pp=ygUJ44Of44K744K5" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 31) { %> <!-- IDが31の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=F3tnfgZhJME" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 32) { %> <!-- IDが32の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=R4xgeGinzUY" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 33) { %> <!-- IDが33の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=ZPjzVpS_R30" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 34) { %> <!-- IDが34の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=QlUVCG3YmCs" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 35) { %> <!-- IDが35の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=MyUUHpjMBvk&pp=ygUe44KI44Gr44GS44CA44OQ44Kk44Oe44Kk44K144Kk" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 36) { %> <!-- IDが36の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=aqoeNOw4_uQ" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 37) { %> <!-- IDが37の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=IMU0ctb7E60" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 38) { %> <!-- IDが38の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=DG2f4Iywll0" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 39) { %> <!-- IDが39の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=CZd6s56uIJw" target="_blank"><%= row.song_name %></a></td>
+        <% } else if (row.id === 40) { %> <!-- IDが39の場合のリンク -->
+          <td><a href="https://www.youtube.com/watch?v=vpVfhe0kd7w" target="_blank"><%= row.song_name %></a></td>
+        <% } else { %> <!-- その他の場合 -->
           <td><a href="/song/<%= row.id %>"><%= row.song_name %></a></td>
         <% } %>
       </tr>
