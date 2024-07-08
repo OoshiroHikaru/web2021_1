@@ -106,57 +106,95 @@ insert into example (都道府県,人口,大学) values ("` + req.body.name + `"
  console.log(req.body);
 });
 
+// ホームページ
 app.get("/home", (req, res) => {
-  const message = "Music fistival";
-  res.render('music', {mes:message});
+  const message = "Music festival";
+  res.render('music', { mes: message });
 });
 
-app.get("/artist", (req, res) => { 
-let sql = ` 
-	select id, name as artist_name from artist;
-`; 
-console.log(sql);
-db.serialize(() => { 
-　 db.all(sql, (error, row) => {
-　　 if (error) { 
-　　 console.log("Database error: ", error);
-　　　res.render('music', { mes: "エラーです" }); 
-　　} else { 
-　　console.log("Query result: ", row);
-　　　res.render('artist', { data: row });
-　　　}
-　　 });
- 　});
- }); 
- 
-app.get("/song", (req, res) => { 
-    let sql = `
-        select music.id, music.name as song_name
-        from music
-        inner join artist on music.artist_id = artist.id;
-    `;
-    
-    console.log(sql);
-    
-    db.serialize(() => { 
-        db.all(sql, (error, rows) => {
-            if (error) { 
-                console.log(error);
-                res.render('music', { mes: "エラーです" }); 
-            } else { 
-                console.log(rows);
-                res.render('song', { data: rows });
-            }
-        });
+// アーティスト一覧
+app.get("/artist", (req, res) => {
+  const sql = `SELECT id, name AS artist_name FROM artist;`;
+
+  console.log(sql);
+
+  db.serialize(() => {
+    db.all(sql, (error, rows) => {
+      if (error) {
+        console.log("Database error: ", error);
+        res.render('music', { mes: "エラーです" });
+      } else {
+        console.log("Query result: ", rows);
+        res.render('artist', { data: rows });
+      }
     });
+  });
 });
 
+// 曲一覧
+app.get("/song", (req, res) => {
+  console.log("/song");
 
+  const sql = `
+    SELECT id, name AS song_name
+    FROM music;
+  `;
 
+  console.log(sql);
 
+  db.serialize(() => {
+    db.all(sql, (error, rows) => {
+      if (error) {
+        console.log(error);
+        res.render('music', { mes: "エラーです" });
+      } else {
+        console.log(rows);
+        res.render('song', { data: rows });
+      }
+    });
+  });
+});
 
+// アーティストと曲の一覧
+app.get("/artist_song", (req, res) => {
+  const sql = `
+    SELECT music.id, music.name AS song_name, artist.name AS artist_name
+    FROM music
+    INNER JOIN artist ON music.artist_id = artist.id;
+  `;
+
+  db.serialize(() => {
+    db.all(sql, (error, rows) => {
+      if (error) {
+        res.render('music', { mes: "エラーです" });
+      } else {
+        res.render('artist_song', { data: rows });
+      }
+    });
+  });
+});
+
+// 特定のアーティストの曲一覧
+app.get("/song/:id", (req, res) => {
+  console.log("/song/:id");
+  const artistId = req.params.id;
+
+  db.serialize(() => {
+    db.all("SELECT * FROM music WHERE artist_id = ?", [artistId], (error, rows) => {
+      if (error) {
+        console.error(error);
+        return res.render('music', { mes: "エラーです" });
+      }
+
+      res.render('song', { data: rows });
+    });
+  });
+});
+
+// 404エラーハンドリング
 app.use(function(req, res, next) {
   res.status(404).send('ページが見つかりません');
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
+

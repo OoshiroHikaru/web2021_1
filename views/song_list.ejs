@@ -14,11 +14,7 @@
     <% data.forEach(function(row) { %>
       <tr id="song<%= row.id %>">
         <td><%= row.id %></td>
-        <% if (row.id === 1) { %>  <!-- IDが1の場合に外部リンクを設定 -->
-          <td><a href="https://vaundy.jp/news/detail/3004" target="_blank"><%= row.song_name %></a></td>
-        <% } else { %>
-          <td><a href="/song/<%= row.id %>"><%= row.song_name %></a></td>
-        <% } %>
+        <td><a href="/song/<%= row.id %>"><%= row.song_name %></a></td>
       </tr>
     <% }); %>
   </table>

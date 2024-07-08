@@ -1,23 +1,30 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Artist List</title>
 </head>
+
 <body>
+
   <h2>アーティスト一覧</h2>
+
   <table border="1">
     <tr>
       <th>ID</th>
       <th>アーティスト名</th>
     </tr>
     <% data.forEach(function(row) { %>
-      <tr>
+      <tr id="artist<%= row.id %>">
         <td><%= row.id %></td>
-        <td><%= row.artist_name %></td>
+        <td><a href="/artist/:id<%= row.id %>"><%= row.artist_name %></a></td>
       </tr>
     <% }); %>
   </table>
+
 </body>
+
 </html>
 

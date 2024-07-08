@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Song Detail</title>
+</head>
+<body>
+  <h2>曲の詳細情報</h2>
+  <table border="1">
+    <% data.forEach(function(row) { %>
+      <tr>
+        <th>ID</th>
+        <td><%= row.id %></td>
+      </tr>
+      <tr>
+        <th>曲名</th>
+        <td><%= row.name %></td>
+      </tr>
+      <tr>
+        <th>アーティストID</th>
+        <td><%= row.artist_id %></td>
+      </tr>
+    <% }); %>
+  </table>
+  <a href="/song">戻る</a>
+</body>
+</html>
+
