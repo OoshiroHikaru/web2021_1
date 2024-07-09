@@ -131,6 +131,31 @@ app.get("/artist", (req, res) => {
   });
 });
 
+// アーティストのページ
+app.get("/artist/:id", (req, res) => {
+  const artistId = req.params.id;
+  let artistName = "";
+
+  // ここでは、データベースからアーティスト名を取得する処理になる
+  // 例として、ハードコーディングした処理は避けるべき
+  // データベースからのクエリを行う例を示す
+  const sql = `SELECT name FROM artist WHERE id = ?;`;
+
+  db.get(sql, [artistId], (error, row) => {
+    if (error) {
+      console.error("Database error: ", error);
+      res.render('music', { mes: "エラーです" });
+    } else {
+      if (row) {
+        artistName = row.name;
+        res.render('Vaundy', { artistName });
+      } else {
+        res.status(404).send('アーティストが見つかりません');
+      }
+    }
+  });
+});
+
 // 曲一覧
 app.get("/song", (req, res) => {
   console.log("/song");

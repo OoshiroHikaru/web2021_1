@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
   <meta charset="utf-8">
-  <title>Artist List</title>
+  <title>アーティスト一覧</title>
 </head>
-
 <body>
-
   <h2>アーティスト一覧</h2>
-
   <table border="1">
     <tr>
       <th>ID</th>
@@ -19,12 +14,17 @@
     <% data.forEach(function(row) { %>
       <tr id="artist<%= row.id %>">
         <td><%= row.id %></td>
-        <td><a href="/artist/:id<%= row.id %>"><%= row.artist_name %></a></td>
+        <td>
+          <% if (row.id === 1) { %>
+            <a href="/artist/<%= row.id %>"><%= row.artist_name %></a> <!-- バンディーのリンク -->
+          <% } else { %>
+            <a href="/artist/<%= row.id %>"><%= row.artist_name %></a> <!-- その他のアーティストのリンク -->
+          <% } %>
+        </td>
       </tr>
     <% }); %>
   </table>
-
 </body>
-
 </html>
+
 
