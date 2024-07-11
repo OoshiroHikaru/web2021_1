@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= artist.artist_name %>の詳細</title>
+</head>
+<body bgcolor=“#000000” text="ffffff" link=”ff0000”>
+  <h2><%= artist.artist_name %>の詳細</h2>
+  <p>自己紹介: <%= artist.bio %></p>
+  <p>公式ウェブサイトへのリンク: <a href="<%= artist.homepage %>" target="_blank"><%= artist.homepage %></a></p>
+  <a href="/artist">戻る</a>
+</body>
+</html>
+

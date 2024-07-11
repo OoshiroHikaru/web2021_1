@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>アーティスト一覧</title>
 </head>
-<body>
+<body bgcolor=“#000000” text="ffffff" link=”ff0000”>
   <h2>アーティスト一覧</h2>
   <table border="1">
     <tr>
@@ -15,11 +15,7 @@
       <tr id="artist<%= row.id %>">
         <td><%= row.id %></td>
         <td>
-          <% if (row.id === 1) { %>
-            <a href="/artist/<%= row.id %>"><%= row.artist_name %></a> <!-- バンディーのリンク -->
-          <% } else { %>
-            <a href="/artist/<%= row.id %>"><%= row.artist_name %></a> <!-- その他のアーティストのリンク -->
-          <% } %>
+          <a href="/artist/<%= row.id %>"><%= row.artist_name %></a>
         </td>
       </tr>
     <% }); %>
