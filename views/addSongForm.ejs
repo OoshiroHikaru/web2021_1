@@ -1,0 +1,28 @@
+<!-- addSongForm.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>曲を追加する</title>
+</head>
+<body>
+  <h2>曲を追加する</h2>
+  <form action="/song/add" method="POST">
+    <label for="name">曲名:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="artistId">アーティストID:</label><br>
+    <input type="text" id="artistId" name="artistId" required><br><br>
+    
+    <label for="genre">ジャンル:</label><br>
+    <input type="text" id="genre" name="genre" required><br><br>
+    
+    <label for="releaseDate">リリース日:</label><br>
+    <input type="date" id="releaseDate" name="releaseDate" required><br><br>
+    
+    <button type="submit">曲を追加する</button>
+  </form>
+</body>
+</html>
+

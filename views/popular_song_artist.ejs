@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人気のある曲リスト</title>
+    <style>
+        /* CSS スタイルを追加 */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        a:link, a:visited {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>人気のある曲リスト</h1>
+
+    <h2>邦楽</h2>
+    <ul>
+        <% if (jpopData && jpopData.length > 0) { %>
+            <% jpopData.forEach(song => { %>
+                <li><%= song.song_name %></li>
+            <% }); %>
+        <% } else { %>
+            <li>邦楽の曲が見つかりませんでした。</li>
+        <% } %>
+    </ul>
+
+    <h2>洋楽</h2>
+    <ul>
+        <% if (westernData && westernData.length > 0) { %>
+            <% westernData.forEach(song => { %>
+                <li><%= song.song_name %></li>
+            <% }); %>
+        <% } else { %>
+            <li>洋楽の曲が見つかりませんでした。</li>
+        <% } %>
+    </ul>
+</body>
+</html>
+

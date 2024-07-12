@@ -1,0 +1,28 @@
+<!-- editSongForm.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>曲を修正する</title>
+</head>
+<body>
+  <h2>曲を修正する</h2>
+  <form action="/song/edit/<%= song.id %>" method="POST">
+    <label for="name">曲名:</label><br>
+    <input type="text" id="name" name="name" value="<%= song.name %>" required><br><br>
+    
+    <label for="artistId">アーティストID:</label><br>
+    <input type="text" id="artistId" name="artistId" value="<%= song.artist_id %>" required><br><br>
+    
+    <label for="genre">ジャンル:</label><br>
+    <input type="text" id="genre" name="genre" value="<%= song.genre %>" required><br><br>
+    
+    <label for="releaseDate">リリース日:</label><br>
+    <input type="date" id="releaseDate" name="releaseDate" value="<%= song.release_date %>" required><br><br>
+    
+    <button type="submit">曲を修正する</button>
+  </form>
+</body>
+</html>
+

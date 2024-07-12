@@ -4,6 +4,7 @@ const app = express();
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test.db');
 
+
 let additionalData = [
   { id: 1, artist_name: "Vaundy", bio: "Vaundyの音楽はポップやインディーズの要素を融合させた、独自の感性と深みのあるサウンドが特徴的です。彼の歌声は独特でありながらも心地よく、その楽曲はしばしば日常や個人の感情をテーマにしています。特に代表曲「卒業」や「良いのかな」などは、そのリリックの深さとメロディの美しさが多くの聴衆に響きました。Vaundyは若手アーティストとして注目を集め、その独創性と才能で日本の音楽シーンに新しい風を吹き込んでいます。彼の音楽はその感受性と音楽性で多くのリスナーに支持されており、今後の活躍にも期待が寄せられています。", homepage: "https://vaundy.jp" },
   { id: 2, artist_name: "BLUE ENCOUNT", bio: "BLUE ENCOUNTの音楽はロックやポップパンクの要素を融合させた、エネルギッシュで力強いサウンドが特徴的です。彼らの歌声は情熱的であり、その楽曲はしばしば勇気や希望、挑戦などをテーマにしています。特に代表曲「手紙」や「DAY×DAY」などは、そのダイナミックな演奏と共に多くのファンを魅了しました。BLUE ENCOUNTはバンドとしてのキャリアを積み重ね、その成長と共に日本のロックシーンで確固たる地位を築いています。彼らの音楽はパワフルなエモーションと、ポジティブなメッセージが詰まった魅力で、多くの聴衆に愛され続けています。", homepage: "https://blueencount.jp" },
@@ -275,26 +276,64 @@ app.get("/song/:id", (req, res) => {
   });
 });
 
-app.get("/song/popular", (req, res) => {
-  const sql = `
-    SELECT id, name AS song_name
+app.get("/song_popular", (req, res) => {
+  const sqlJpop = `
+  SELECT id, name AS song_name
     FROM music
+    WHERE category = '邦楽'
     ORDER BY popularity DESC;
-  `;
+`;
+
+  const sqlWestern = `
+  SELECT id, name AS song_name
+    FROM music
+    WHERE category = '洋楽'
+    ORDER BY popularity DESC;
+`;
 
   db.serialize(() => {
-    db.all(sql, (error, rows) => {
-      if (error) {
-        console.log(error);
-        res.render('music', { mes: "エラーです" });
+    db.all(sqlJpop, (errorJpop, rowsJpop) => {
+      if (errorJpop) {
+        console.log(errorJpop);
+        res.render('music', { mes: "邦楽の取得中にエラーが発生しました。" });
       } else {
-        console.log(rows);
-        res.render('popular_song_artist', { data: rows });
+        db.all(sqlWestern, (errorWestern, rowsWestern) => {
+          if (errorWestern) {
+            console.log(errorWestern);
+            res.render('music', { mes: "洋楽の取得中にエラーが発生しました。" });
+          } else {
+            console.log("邦楽:", rowsJpop);
+            console.log("洋楽:", rowsWestern);
+            res.render('popular_song_artist', { jpopData: rowsJpop, westernData: rowsWestern });
+          }
+        });
       }
     });
   });
 });
 
+app.post("/new", (req, res) => {
+  let sql = `INSERT INTO music (id, name, artist_id) 
+             VALUES (req.body.song, req.body.artistname, req.body.janre )`;
+
+  db.run(sql, params, function(err) {
+    if (err) {
+      console.log(err);
+      res.render('music', { mes: "エラーが発生しました。" });
+    } else {
+      console.log("新しい曲が追加されました。");
+      let selectQuery = `SELECT * FROM music WHERE id = ?`;
+      db.get(selectQuery, [this.lastID], (err, row) => {
+        if (err) {
+          console.log(err);
+          res.render('music', { mes: "エラーが発生しました。" });
+        } else {
+          res.redirect('newsong');
+        }
+      });
+    }
+  });
+});
 
 // 404エラーハンドリング
 app.use(function(req, res, next) {
@@ -302,4 +341,3 @@ app.use(function(req, res, next) {
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
-
