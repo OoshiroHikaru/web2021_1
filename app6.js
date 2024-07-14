@@ -313,26 +313,30 @@ app.get("/song_popular", (req, res) => {
 });
 
 app.post("/new", (req, res) => {
-  let sql = `INSERT INTO music (id, name, artist_id) 
-             VALUES (req.body.song, req.body.artistname, req.body.janre )`;
+  let sql = `
+  INSERT INTO music (name, artist_id) VALUES ("` + req.body.name + `",` + req.body.artist_id + `);
+  `
 
-  db.run(sql, params, function(err) {
-    if (err) {
-      console.log(err);
+  console.log(sql);
+  db.serialize( () => {
+  db.run( sql, (error, row) => {
+    if (error) {
+      console.log(error);
       res.render('music', { mes: "エラーが発生しました。" });
     } else {
-      console.log("新しい曲が追加されました。");
+      console.log(""新しい曲が追加されました。");
       let selectQuery = `SELECT * FROM music WHERE id = ?`;
-      db.get(selectQuery, [this.lastID], (err, row) => {
-        if (err) {
-          console.log(err);
+      db.get(selectQuery, [this.lastID], (error, row) => {
+        if (error) {
+          console.log(error);
           res.render('music', { mes: "エラーが発生しました。" });
         } else {
-          res.redirect('newsong');
+          res.redirect('song');
         }
       });
     }
   });
+});
 });
 
 // 404エラーハンドリング
