@@ -3,8 +3,37 @@
 <head>
   <meta charset="utf-8">
   <title>Song List</title>
+   <style>
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ffffff;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #333333;
+    }
+    tr:nth-child(even) {
+      background-color: ##333333;
+    }
+    a {
+      color: #ff0000;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-<body bgcolor=“#000000” text="ffffff" link=”ff0000”>
+<body>
   <h2>曲名　一覧</h2>
   <table border="1">
     <tr>
@@ -317,7 +346,7 @@
         <% } else if (row.id === 151) { %> <!-- IDが39の場合のリンク -->
           <td><a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" target="_blank"><%= row.song_name %></a></td>
         <% } else if (row.id === 152) { %> <!-- IDが39の場合のリンク -->
-          <td><a href="" target="_blank"><%= row.song_name %></a></td>
+          <td><a href="https://www.youtube.com/watch?v=Il0S8BoucSA&pp=ygUSc2hpdmVycyBlZCBzaGVlcmFu" target="_blank"><%= row.song_name %></a></td>
         <% } else if (row.id === 153) { %> <!-- IDが39の場合のリンク -->
           <td><a href="https://www.youtube.com/watch?v=Il0S8BoucSA" target="_blank"><%= row.song_name %></a></td>
         <% } else if (row.id === 154) { %> <!-- IDが39の場合のリンク -->
@@ -470,7 +499,7 @@
           <td><a href="https://www.youtube.com/watch?v=pK060iUFWXg&pp=ygUNaGF3YWlpIG1hbHVtYQ%3D%3D" target="_blank"><%= row.song_name %></a></td>
         <% } else if (row.id === 228) { %> <!-- IDが39の場合のリンク -->
           <td><a href="https://www.youtube.com/watch?v=bKu3S9sZh1c&pp=ygUPbWFycnkgbWUgbWFsdW1h" target="_blank"><%= row.song_name %></a></td>
-        <% } else if (row.id === 228) { %> <!-- IDが39の場合のリンク -->
+        <% } else if (row.id === 229) { %> <!-- IDが39の場合のリンク -->
           <td><a href="https://www.youtube.com/watch?v=v8NpdROrYM8&pp=ygULYWFQTSBtYWx1bWE%3D" target="_blank"><%= row.song_name %></a></td>
         <% } else if (row.id === 230) { %> <!-- IDが39の場合のリンク -->
           <td><a href="https://www.youtube.com/watch?v=t_jHrUE5IOk&pp=ygUNRmVsaWNlcyBsb3MgNA%3D%3D" target="_blank"><%= row.song_name %></a></td>
@@ -489,7 +518,7 @@
         <% } else if (row.id === 237) { %> <!-- IDが39の場合のリンク -->
           <td><a href="https://www.youtube.com/watch?v=fTgJx-zmpM0&pp=ygUHaGFwcGxpeQ%3D%3D" target="_blank"><%= row.song_name %></a></td>
         <% } else if (row.id === 238) { %> <!-- IDが39の場合のリンク -->
-          <td><a href=""https://www.youtube.com/watch?v=CQXD4cKsPDg&pp=ygUUbWFnaWMgb25lIGRpcmVjdGlvbiA%3D target="_blank"><%= row.song_name %></a></td>
+          <td><a href="https://www.youtube.com/watch?v=CQXD4cKsPDg&pp=ygUUbWFnaWMgb25lIGRpcmVjdGlvbiA%3D"target="_blank"><%= row.song_name %></a></td>
         <% } else if (row.id === 239) { %> <!-- IDが39の場合のリンク -->
           <td><a href="https://www.youtube.com/watch?v=Y1xs_xPb46M&pp=ygUXb25lIHRoaW5nIG9uZSBkaXJlY3Rpb24%3D" target="_blank"><%= row.song_name %></a></td>
         <% } else if (row.id === 240) { %> <!-- IDが39の場合のリンク -->

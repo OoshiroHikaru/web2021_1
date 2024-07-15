@@ -13,6 +13,14 @@
         a:link, a:visited {
             color: #ff0000;
         }
+        ul {
+            list-style-type: none; /* リストスタイルを消す */
+            padding-left: 0; /* リストの左側の余白を消す */
+        }
+        .top-rank {
+            color: #ffff00; /* 黄色 */
+            font-size: 1.2em; /* 少し大きめの文字 */
+        }
     </style>
 </head>
 <body>
@@ -21,9 +29,9 @@
     <h2>邦楽</h2>
     <ul>
         <% if (jpopData && jpopData.length > 0) { %>
-            <% jpopData.forEach(song => { %>
-                <li><%= song.song_name %></li>
-            <% }); %>
+            <% for (let i = 0; i < 50 && i < jpopData.length; i++) { %>
+                <li class="<%= i < 3 ? 'top-rank' : '' %>"><%= i + 1 %>. <%= jpopData[i].song_name %></li>
+            <% } %>
         <% } else { %>
             <li>邦楽の曲が見つかりませんでした。</li>
         <% } %>
@@ -32,13 +40,12 @@
     <h2>洋楽</h2>
     <ul>
         <% if (westernData && westernData.length > 0) { %>
-            <% westernData.forEach(song => { %>
-                <li><%= song.song_name %></li>
-            <% }); %>
+            <% for (let i = 0; i < 50 && i < westernData.length; i++) { %>
+                <li class="<%= i < 3 ? 'top-rank' : '' %>"><%= i + 1 %>. <%= westernData[i].song_name %></li>
+            <% } %>
         <% } else { %>
             <li>洋楽の曲が見つかりませんでした。</li>
         <% } %>
     </ul>
 </body>
 </html>
-

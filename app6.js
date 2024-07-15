@@ -324,7 +324,7 @@ app.post("/new", (req, res) => {
       console.log(error);
       res.render('music', { mes: "エラーが発生しました。" });
     } else {
-      console.log(""新しい曲が追加されました。");
+      console.log("新しい曲が追加されました。");
       let selectQuery = `SELECT * FROM music WHERE id = ?`;
       db.get(selectQuery, [this.lastID], (error, row) => {
         if (error) {
@@ -338,7 +338,6 @@ app.post("/new", (req, res) => {
   });
 });
 });
-
 // 404エラーハンドリング
 app.use(function(req, res, next) {
   res.status(404).send('ページが見つかりません');
